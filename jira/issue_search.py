@@ -2,10 +2,10 @@ from flask import Flask
 from flask_restful import Resource, Api
 from jira import JIRA
 from flask_jsonpify import jsonify
-import json
+from issueUtil import prettify
 
 server = 'https://jira.nisc.coop/jira'
-jira = JIRA(server=server, basic_auth=("gmausshardt", ""))
+jira = JIRA(server=server, basic_auth=("gmausshardt", "Leahbestgirl10hearts"))
 
 app = Flask(__name__)
 api = Api(app)
@@ -27,7 +27,8 @@ class IssuesByOwners(Resource):
             issues[owner] = []
             current_issues = jira.search_issues('assignee = ' + owner + ' and resolution = "Unresolved"')
             for issue in current_issues:
-                issues[owner].append(issue.key)
+                # issues[owner].append(issue)
+                issues[owner].append(prettify(issue))
         finale = {}
         finale['issues'] = issues
         return jsonify(finale)
