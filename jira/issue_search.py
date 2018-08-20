@@ -5,7 +5,7 @@ from flask_jsonpify import jsonify
 import json
 
 server = 'https://jira.nisc.coop/jira'
-jira = JIRA(server=server, basic_auth=("gmausshardt", "<password>"))
+jira = JIRA(server=server, basic_auth=("gmausshardt", ""))
 
 app = Flask(__name__)
 api = Api(app)
