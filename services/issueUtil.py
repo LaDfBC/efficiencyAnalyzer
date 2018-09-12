@@ -13,7 +13,6 @@ def prettify(issue):
         final_issue["sprints"] = str(issue.fields.customfield_10005) # Which sprints has this JIRA been a part of?
     except AttributeError:
         final_issue["sprints"] = []
-
     try:
         final_issue["team"] = str(issue.fields.customfield_11905)
     except AttributeError:
