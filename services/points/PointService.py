@@ -20,7 +20,12 @@ class PointsByIssueNumbers(Resource):
 
 class PointsByTeamBySprint(Resource):
     def get(self, teams, sprints):
-        return jsonify({})
+        sprints = {}
+        points = {}
+        for sprint in sprints:
+            fetched_sprint = JiraService.get_jira().sprint(sprint)
+
+        return jsonify(points)
 
 class PointsBySprintInGeneral(Resource):
     def get(self, sprints):

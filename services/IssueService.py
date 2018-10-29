@@ -4,9 +4,6 @@ from flask_jsonpify import jsonify
 from issueUtil import prettify
 from services import JiraService
 
-app = Flask(__name__)
-api = Api(app)
-
 class IssuesByIds(Resource):
     def get(self, jira_numbers):
         issues = {}
@@ -42,9 +39,6 @@ class IssuesByTeams(Resource):
         finale['issues'] = issues
         return jsonify(finale)
 
-api.add_resource(IssuesByIds, '/issues/numbers/<jira_numbers>')
-api.add_resource(IssuesByOwners, '/issues/owners/<owners>')
-api.add_resource()
 
 
 if __name__ == '__main__':
